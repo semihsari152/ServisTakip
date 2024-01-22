@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Customer\response\" />
+    <Folder Include="Models\Customer\request\" />
+    <Folder Include="Models\FaultTrack\response\" />
+    <Folder Include="Models\FaultTrack\request\" />
+    <Folder Include="Models\Product\response\" />
+    <Folder Include="Models\Product\request\" />
+  </ItemGroup>
+
+</Project>
