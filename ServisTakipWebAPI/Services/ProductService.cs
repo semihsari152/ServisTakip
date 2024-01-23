@@ -1,32 +1,37 @@
-﻿using DataAccessLayer.Abstract;
-using ServisTakipWebAPI.Models;
+﻿using ServisTakipWebAPI.Models;
 using ServisTakipWebAPI.Models.Request;
 using ServisTakipWebAPI.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete
+namespace ServisTakipWebAPI.Services
 {
-    public class ProductRepository : IProductDal
+    public interface IProductService
     {
+        List<ProductResponseModel> GetAllProducts();
+        ProductResponseModel GetProductById(int productId);
+        int CreateProduct(ProductRequestModel productRequest);
+        void UpdateProduct(int productId, ProductRequestModel productRequest);
+        void DeleteProduct(int productId);
+    }
+
+
+    public class ProductService : IProductService
+    {
+
         private readonly ServisTakipDbContext _dbContext;
 
-        public ProductRepository(ServisTakipDbContext dbContext)
+        public ProductService(ServisTakipDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public List<ProductResponseModel> GetAll()
+        public List<ProductResponseModel> GetAllProducts()
         {
             var products = _dbContext.Products.ToList();
             var productResponses = products.Select(MapToProductResponse).ToList();
             return productResponses;
         }
 
-        public ProductResponseModel GetById(int productId)
+        public ProductResponseModel GetProductById(int productId)
         {
             var product = _dbContext.Products.Find(productId);
             if (product == null)
@@ -37,7 +42,7 @@ namespace DataAccessLayer.Concrete
             return MapToProductResponse(product);
         }
 
-        public int Create(ProductRequestModel productRequest)
+        public int CreateProduct(ProductRequestModel productRequest)
         {
             var newProduct = new Product
             {
@@ -54,7 +59,7 @@ namespace DataAccessLayer.Concrete
             return newProduct.ProductID;
         }
 
-        public void Update(int productId, ProductRequestModel productRequest)
+        public void UpdateProduct(int productId, ProductRequestModel productRequest)
         {
             var existingProduct = _dbContext.Products.Find(productId);
             if (existingProduct == null)
@@ -71,7 +76,7 @@ namespace DataAccessLayer.Concrete
             _dbContext.SaveChanges();
         }
 
-        public void Delete(int productId)
+        public void DeleteProduct(int productId)
         {
             var productToDelete = _dbContext.Products.Find(productId);
             if (productToDelete == null)

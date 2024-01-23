@@ -5,11 +5,7 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServisTakip", "ServisTakip\ServisTakip.csproj", "{3B7296EA-7EBD-4077-9EE4-4147230774D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{30EE8167-71CD-4C88-BCAB-A6F9CAF2393A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServisTakipWebAPI", "ServisTakipWebAPI\ServisTakipWebAPI.csproj", "{D01ACB37-4CAE-4464-9BA7-672B882A504D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{84B0B689-BBEA-49FB-B3C8-F0ECD4661C3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +17,10 @@ Global
 		{3B7296EA-7EBD-4077-9EE4-4147230774D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B7296EA-7EBD-4077-9EE4-4147230774D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B7296EA-7EBD-4077-9EE4-4147230774D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30EE8167-71CD-4C88-BCAB-A6F9CAF2393A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30EE8167-71CD-4C88-BCAB-A6F9CAF2393A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30EE8167-71CD-4C88-BCAB-A6F9CAF2393A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30EE8167-71CD-4C88-BCAB-A6F9CAF2393A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D01ACB37-4CAE-4464-9BA7-672B882A504D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D01ACB37-4CAE-4464-9BA7-672B882A504D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D01ACB37-4CAE-4464-9BA7-672B882A504D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D01ACB37-4CAE-4464-9BA7-672B882A504D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84B0B689-BBEA-49FB-B3C8-F0ECD4661C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84B0B689-BBEA-49FB-B3C8-F0ECD4661C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84B0B689-BBEA-49FB-B3C8-F0ECD4661C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84B0B689-BBEA-49FB-B3C8-F0ECD4661C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

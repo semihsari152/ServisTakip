@@ -1,20 +1,23 @@
-﻿using DataAccessLayer.Abstract;
-using ServisTakipWebAPI.Models;
+﻿using ServisTakipWebAPI.Models;
 using ServisTakipWebAPI.Models.Request;
 using ServisTakipWebAPI.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete
+namespace ServisTakipWebAPI.Services
 {
-    public class FaultTrackRepository : IFaultTrackDal
+    public interface IFaultTrackService
+    {
+        List<FaultTrackResponseModel> GetAllFaultTracks();
+        FaultTrackResponseModel GetFaultTrackById(int faultTrackId);
+        int CreateFaultTrack(FaultTrackRequestModel faultTrackRequest);
+        void UpdateFaultTrack(int faultTrackId, FaultTrackRequestModel faultTrackRequest);
+        void DeleteFaultTrack(int faultTrackId);
+    }
+
+    public class FaultTrackService : IFaultTrackService
     {
         private readonly ServisTakipDbContext _dbContext;
 
-        public FaultTrackRepository(ServisTakipDbContext dbContext)
+        public FaultTrackService(ServisTakipDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -107,5 +110,7 @@ namespace DataAccessLayer.Concrete
                 // Other properties can be mapped similarly
             };
         }
+
+
     }
 }

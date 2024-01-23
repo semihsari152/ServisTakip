@@ -1,26 +1,29 @@
-﻿using DataAccessLayer.Abstract;
-using ServisTakipWebAPI.Models;
+﻿using ServisTakipWebAPI.Models;
 using ServisTakipWebAPI.Models.Request;
 using ServisTakipWebAPI.Models.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrete
+namespace ServisTakipWebAPI.Services
 {
-    public class CustomerRepository : ICustomerDal
-    {
 
+    public interface ICustomerService
+    {
+        List<CustomerResponseModel> GetAllCustomers();
+        CustomerResponseModel GetCustomerById(int productId);
+        int CreateCustomer(CustomerRequestModel customerRequest);
+        void UpdateCustomer(int customerId, CustomerRequestModel customerRequest);
+        void DeleteCustomer(int customerId);
+    }
+
+    public class CustomerService : ICustomerService
+    {
         private readonly ServisTakipDbContext _dbContext;
 
-        public CustomerRepository(ServisTakipDbContext dbContext)
+        public CustomerService(ServisTakipDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public int Create(CustomerRequestModel request)
+        public int CreateCustomer(CustomerRequestModel request)
         {
             var newCustomer = new Customer
             {
@@ -38,7 +41,7 @@ namespace DataAccessLayer.Concrete
             return newCustomer.CustomerID;
         }
 
-        public void Delete(int id)
+        public void DeleteCustomer(int id)
         {
             var customerToDelete = _dbContext.Customers.Find(id);
             if (customerToDelete == null)
@@ -50,14 +53,14 @@ namespace DataAccessLayer.Concrete
             _dbContext.SaveChanges();
         }
 
-        public List<CustomerResponseModel> GetAll()
+        public List<CustomerResponseModel> GetAllCustomers()
         {
             var customers = _dbContext.Customers.ToList();
             var customerResponses = customers.Select(MapToCustomerResponse).ToList();
             return customerResponses;
         }
 
-        public CustomerResponseModel GetById(int id)
+        public CustomerResponseModel GetCustomerById(int id)
         {
             var customer = _dbContext.Customers.Find(id);
             if (customer == null)
@@ -68,7 +71,7 @@ namespace DataAccessLayer.Concrete
             return MapToCustomerResponse(customer);
         }
 
-        public void Update(int id, CustomerRequestModel request)
+        public void UpdateCustomer(int id, CustomerRequestModel request)
         {
             var existingCustomer = _dbContext.Customers.Find(id);
             if (existingCustomer == null)
@@ -99,5 +102,6 @@ namespace DataAccessLayer.Concrete
                 // Other properties can be mapped similarly
             };
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Abstract;
-using DataAccessLayer.Context;
+using ServisTakipWebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

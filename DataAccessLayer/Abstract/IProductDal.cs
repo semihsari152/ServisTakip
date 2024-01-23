@@ -9,13 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IProductDal
+    public interface IProductDal : IGenericRepository<ProductRequestModel, ProductResponseModel>
     {
-        List<ProductResponseModel> GetAllProducts();
-        ProductResponseModel GetProductById(int productId);
-        int CreateProduct(ProductRequestModel productRequest);
-        void UpdateProduct(int productId, ProductRequestModel productRequest);
-        void DeleteProduct(int productId);
-
     }
 }
