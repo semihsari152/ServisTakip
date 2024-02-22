@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ServisTakipWebAPI.Models.Request;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServisTakipWebAPI.Models
 {
@@ -11,6 +12,7 @@ namespace ServisTakipWebAPI.Models
         public string? CustomerEmail { get; set; }
         public string? CustomerCity { get; set; }
         public string? CustomerCounty { get; set; }
+        public ICollection<FaultTrack>? FaultTrack { get; set; }
 
     }
 }

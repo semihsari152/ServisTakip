@@ -8,6 +8,5 @@
         public int ProductSerialNumber { get; set; }
         public string? ProductAccessories { get; set; }
 
-        public List<FaultTrack>? FaultTracks { get; set; }
     }
 }

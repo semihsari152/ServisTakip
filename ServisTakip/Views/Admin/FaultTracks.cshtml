@@ -1,0 +1,114 @@
+﻿@using ServisTakip.Models.FaultTrack.response
+@model List<FaultTrackResponseModel>
+
+@{
+    ViewData["Title"] = "Devices";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="section">
+    <div class="section-header">
+        <h1>DataTables</h1>
+        <div class="section-header-breadcrumb">
+            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="#">Modules</a></div>
+            <div class="breadcrumb-item">DataTables</div>
+        </div>
+    </div>
+
+    <div class="section-body">
+     
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Cihazlar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table-2">
+                                <thead>
+                                    <tr>
+                                     
+                                        <th>Döküman No</th>
+                                        <th>Aşama</th>
+                                        <th>Müşteri</th>
+                                        <th>Kayıt Tarihi</th>
+                                        <th>Durum</th>
+                                        <th>Detay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.FaultDocumentNumber</td>
+                                            <td class="align-middle">
+                                                @{
+                                                    int totalStages = 6; // Toplam aşama sayısı
+                                                    int progressPercentage = (item.FaultStage * 100) / totalStages; // Her aşama için ilerleme yüzdesi
+                                                    string color = ""; // Rengi depolamak için bir değişken
+
+                                                    // Aşamalara göre renkleri ayarla
+                                                    switch (item.FaultStage)
+                                                    {
+                                                        case 0:
+                                                            color = "bg-light";
+                                                            break;
+                                                        case 1:
+                                                            color = "bg-primary";
+                                                            break;
+                                                        case 2:
+                                                            color = "bg-link";
+                                                            break;
+                                                        case 3:
+                                                            color = "bg-info";
+                                                            break;
+                                                        case 4:
+                                                            color = "bg-success";
+                                                            break;
+                                                        case 5:
+                                                            color = "bg-warning";
+                                                            break;
+                                                        case 6:
+                                                            color = "bg-danger";
+                                                            break;
+                                                        default:
+                                                            color = "bg-light";
+                                                            break;
+                                                    }
+
+                                                    string tooltipText = $"{progressPercentage}%"; 
+                                                }
+                                                <div class="progress" data-height="4" data-toggle="tooltip" title="@tooltipText">
+                                                    <div class="progress-bar @color" style="width: @progressPercentage%"></div>
+                                                </div>
+                                            </td>
+                                            <td>@item.Customer.CustomerName</td>
+                                            <td>@item.FaultCreateDate.ToShortDateString()</td>
+                                            <td>
+                                                <div class="badge @color">@item.FaultStage</div>
+                                            </td>
+                                            <td><a href="/Admin/DeviceDetails/@item.FaultTrackingID" class="btn btn-secondary">Detaylar</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/Admin/AddFaultTrack" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Servis Takip Kaydı Oluştur</a>
+    </div>
+</section>
+
+<!-- JS Libraies -->
+<script src="/stisla-1-2.2.0/dist/assets/modules/datatables/datatables.min.js"></script>
+<script src="/stisla-1-2.2.0/dist/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="/stisla-1-2.2.0/dist/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+<script src="/stisla-1-2.2.0/dist/assets/modules/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- Page Specific JS File -->
+<script src="/stisla-1-2.2.0/dist/assets/js/page/modules-datatables.js"></script>

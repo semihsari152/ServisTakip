@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ServisTakipWebAPI.Models.Request;
+using System.ComponentModel.DataAnnotations;
 
 namespace ServisTakipWebAPI.Models
 {
@@ -13,5 +14,6 @@ namespace ServisTakipWebAPI.Models
         public string? ProductAccessories { get; set; }
 
         public ICollection<FaultTrack>? FaultTrack { get; set; }
+
     }
 }

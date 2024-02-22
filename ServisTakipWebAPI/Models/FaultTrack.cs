@@ -13,9 +13,11 @@ namespace ServisTakipWebAPI.Models
         public DateTime FaultUpdateDate { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; } //Tahmini teslim tarihi
         public string? FaultDescription { get; set; }
-        public string? FaultStage { get; set; } // Arıza Hangi aşamada 0 1 2 3 4 5
+        public int FaultStage { get; set; } // Arıza Hangi aşamada 0 1 2 3 4 5
 
-        public int ProductID { get; set; }
-        public Product? Product { get; set; }
+        public virtual Product? Product { get; set; }
+        public virtual Customer? Customer { get; set; }
+        public virtual ICollection<ProductMovement>? ProductMovements { get; set; }
+
     }
 }

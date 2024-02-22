@@ -1,7 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using ServisTakipWebAPI.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddMvc();
+
+builder.Services.AddControllersWithViews()
+   .AddRazorOptions(options =>
+   {
+       options.ViewLocationFormats.Add("/Views/Shared/Components/ProductMovements/Default.cshtml");
+   });
+
+builder.Services.AddDbContext<ServisTakipDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 

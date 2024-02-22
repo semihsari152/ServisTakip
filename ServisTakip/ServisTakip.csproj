@@ -7,12 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Customer\response\" />
-    <Folder Include="Models\Customer\request\" />
-    <Folder Include="Models\FaultTrack\response\" />
-    <Folder Include="Models\FaultTrack\request\" />
-    <Folder Include="Models\Product\response\" />
-    <Folder Include="Models\Product\request\" />
+    <Compile Remove="wwwroot\ruang-admin\**" />
+    <Content Remove="wwwroot\ruang-admin\**" />
+    <EmbeddedResource Remove="wwwroot\ruang-admin\**" />
+    <None Remove="wwwroot\ruang-admin\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +24,20 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServisTakipWebAPI\ServisTakipWebAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Login\response\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\stisla-1-2.2.0\dist\assets\modules\bootstrap\css\.DS_Store" />
   </ItemGroup>
 
 </Project>

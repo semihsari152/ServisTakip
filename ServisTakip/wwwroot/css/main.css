@@ -1,14 +1,21 @@
 ﻿body {
     margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Köşeleri yuvarlatmak için */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 3D benzeri gölgeli sınır */
 }
 
 .steps {
-    border: 1px solid #e7e7e7
+    border: 2px solid #F3F3F3
 }
 
 .steps-header {
     padding: .375rem;
-    border-bottom: 1px solid #e7e7e7
+    border-bottom: 2px solid #F3F3F3
 }
 
     .steps-header .progress {
@@ -27,7 +34,7 @@
     padding: 1rem .75rem;
     -webkit-transition: all 0.25s ease-in-out;
     transition: all 0.25s ease-in-out;
-    border-right: 1px dashed #dfdfdf;
+    border-right: 2px dashed #dfdfdf;
     color: rgba(0, 0, 0, 0.65);
     font-weight: 600;
     text-align: center;
@@ -45,7 +52,7 @@
     left: .75rem;
     width: 1.5rem;
     height: 1.5rem;
-    border: 1px solid #e7e7e7;
+    border: 2px solid #F3F3F3;
     border-radius: 50%;
     background-color: #fff;
     font-size: .875rem;
@@ -134,7 +141,7 @@
 
     .step {
         border-right: 0;
-        border-bottom: 1px dashed #e7e7e7
+        border-bottom: 2px dashed #e7e7e7
     }
 
         .step:last-child {
@@ -169,3 +176,142 @@
         height: auto;
         display: inline-block;
     }
+
+.productstatus {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.customerdetails, .productdetails, .productstatus {
+    border: 2px solid #F3F3F3;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.65);
+    align-items: center;
+}
+
+    .productdetails img {
+        max-height: 100px;
+        max-width: 100px;
+        border: 1px solid #F3F3F3;
+        border-radius: 50%;
+    }
+
+
+.accordion-row {
+    width: 100%;
+    margin: 20px;
+    color: rgba(0, 0, 0, 0.65);
+    border: 2px solid #F3F3F3;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid #F3F3F3;
+    background-color: #555555;
+    color: white;
+    text-align: center;
+}
+
+.accordion-content {
+    padding: 10px;
+    display: none;
+    border: 2px solid #F3F3F3;
+}
+
+.accordion-row.active .accordion-content {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+}
+
+th, td {
+    border: none;
+    border-bottom: 2px dashed #e7e7e7;
+    padding: 15px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+td {
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 600;
+}
+
+.accordion-header::after {
+    content: '\25BC'; /* ok aşağı yönlü */
+    float: right;
+}
+
+.accordion.active .accordion-header::after {
+    content: '\25B2'; /* ok yukarı yönlü */
+}
+
+.garanti {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    border: 2px solid #e7e7e7;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+
+.left-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.right-container {
+    flex: 3;
+    padding: 20px;
+}
+
+.ariza-text {
+    margin-bottom: 20px;
+}
+
+.garanti-text {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.garanti-belgesi-input {
+    margin-top: 10px;
+}
+
+.exclamation-mark img {
+    width: 50%; /* Resmin genişliği için uygun bir değer belirleyin */
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-color: #555555;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+    .footer img {
+        width: 200px; /* Fotoğrafın genişliği için uygun bir değer belirleyin */
+    }
+
+button[data-toggle="modal"],
+button[data-toggle="modal"]:hover,
+button[data-toggle="modal"]:focus,
+button[data-toggle="modal"]:active {
+    background-color: #555555;
+    color: #fff;
+    border : none;
+}

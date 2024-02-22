@@ -17,7 +17,7 @@ namespace ServisTakipWebAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.15")
+                .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -58,6 +58,9 @@ namespace ServisTakipWebAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FaultTrackingID"));
 
+                    b.Property<int?>("CustomerID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("EstimatedDeliveryDate")
                         .HasColumnType("datetime2");
 
@@ -73,8 +76,8 @@ namespace ServisTakipWebAPI.Migrations
                     b.Property<string>("FaultDocumentNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FaultStage")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("FaultStage")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FaultUpdateDate")
                         .HasColumnType("datetime2");
@@ -82,10 +85,12 @@ namespace ServisTakipWebAPI.Migrations
                     b.Property<string>("FaultWorkerName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductID")
+                    b.Property<int?>("ProductID")
                         .HasColumnType("int");
 
                     b.HasKey("FaultTrackingID");
+
+                    b.HasIndex("CustomerID");
 
                     b.HasIndex("ProductID");
 
@@ -117,15 +122,62 @@ namespace ServisTakipWebAPI.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("ServisTakipWebAPI.Models.ProductMovement", b =>
+                {
+                    b.Property<int>("MovementID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MovementID"));
+
+                    b.Property<int?>("FaultTrackingID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("MovementDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MovementDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MovementID");
+
+                    b.HasIndex("FaultTrackingID");
+
+                    b.ToTable("ProductMovements");
+                });
+
             modelBuilder.Entity("ServisTakipWebAPI.Models.FaultTrack", b =>
                 {
+                    b.HasOne("ServisTakipWebAPI.Models.Customer", "Customer")
+                        .WithMany("FaultTrack")
+                        .HasForeignKey("CustomerID");
+
                     b.HasOne("ServisTakipWebAPI.Models.Product", "Product")
                         .WithMany("FaultTrack")
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductID");
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ServisTakipWebAPI.Models.ProductMovement", b =>
+                {
+                    b.HasOne("ServisTakipWebAPI.Models.FaultTrack", "FaultTrack")
+                        .WithMany("ProductMovements")
+                        .HasForeignKey("FaultTrackingID");
+
+                    b.Navigation("FaultTrack");
+                });
+
+            modelBuilder.Entity("ServisTakipWebAPI.Models.Customer", b =>
+                {
+                    b.Navigation("FaultTrack");
+                });
+
+            modelBuilder.Entity("ServisTakipWebAPI.Models.FaultTrack", b =>
+                {
+                    b.Navigation("ProductMovements");
                 });
 
             modelBuilder.Entity("ServisTakipWebAPI.Models.Product", b =>

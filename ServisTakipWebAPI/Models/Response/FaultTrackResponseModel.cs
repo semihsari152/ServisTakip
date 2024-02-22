@@ -10,9 +10,12 @@
         public DateTime FaultUpdateDate { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; }
         public string? FaultDescription { get; set; }
-        public string? FaultStage { get; set; }
+        public int FaultStage { get; set; }
 
         public int ProductID { get; set; }
-        public Product? Product { get; set; }
+        public ProductResponseModel? Product { get; set; }
+
+        public int CustomerID { get; set; } 
+        public CustomerResponseModel? Customer { get; set; }
     }
 }

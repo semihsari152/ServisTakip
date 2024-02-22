@@ -11,5 +11,6 @@ namespace ServisTakipWebAPI.Models
         public DbSet<Customer>? Customers { get; set; }
         public DbSet<Product>? Products { get; set; }
         public DbSet<FaultTrack>? FaultTracks { get; set; }
+        public DbSet<ProductMovement>? ProductMovements { get; set; }
     }
 }

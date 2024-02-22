@@ -1,0 +1,25 @@
+﻿@model List<ServisTakip.Models.ProductMovements.response.ProductMovementsResponseModel>
+
+@{
+    Layout = null;
+}
+
+
+<div class="accordion" onclick="toggleAccordion(this)">
+    <div class="accordion-header">ÜRÜN HAREKETLERİ</div>
+    <div class="accordion-content">
+        <table>
+            <tr>
+                <th>Tarih</th>
+                <th>Hareketler</th>
+            </tr>
+            @foreach (var movement in Model)
+            {
+                <tr>
+                    <td>@movement.MovementDate.ToString("MM.dd.yyyy HH:mm")</td>
+                    <td>@movement.MovementDescription</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
